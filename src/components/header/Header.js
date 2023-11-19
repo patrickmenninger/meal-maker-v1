@@ -20,7 +20,7 @@ const Header = () => {
             </Navbar.Brand>
             <Navbar.Text className='title'>M E A L M A K E R</Navbar.Text>
             <Navbar.Brand className='username'>
-                <User signedIn={false}/>
+                <User signedIn={true}/>
             </Navbar.Brand>
         </Container>
     </Navbar>
