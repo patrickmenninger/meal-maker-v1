@@ -1,0 +1,32 @@
+.register-form{
+    display: inline-block;
+    border: 1px solid;
+    padding: 2em;
+    width: 40vw;
+    left: 30vw;
+    top: 20vh;
+    position: fixed;
+}
+
+/* .show-button{
+    
+} */
+
+.valid {
+    color: green;
+}
+
+.invalid {
+    color: red;
+}
+
+.offscreen {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    display: block;
+}
+
+.hide{
+    display: none;
+}

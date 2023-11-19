@@ -1,0 +1,17 @@
+
+
+.home-image{
+    height: 90%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.home-text{
+    font-size: 2em;
+    color: white;
+    inline-size: 34vw;
+    text-align: center;
+    position:absolute;
+    top: 49vh;
+    left: 30vw;
+}
