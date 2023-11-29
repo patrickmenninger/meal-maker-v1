@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form } from "react-bootstrap";
 import './Register.css';
 import Button from "react-bootstrap/Button";
-import api from '../../api/axios.js';
+import axios from "../../api/axios.js";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,20}/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
 
 //Set the endpoint for registration in api
-const REGISTER_URL = '/';
+const REGISTER_URL = '/register';
 
 
 const Register = () => {
@@ -97,12 +97,12 @@ const Register = () => {
             // apiName: varName
             //So it could be user (Since it would be the same)
             //And password: pwd
-            const response = await api.post(REGISTER_URL,
-                JSON.stringify({ user, pwd }),
+            const response = await axios.post(REGISTER_URL,
+                JSON.stringify({ username: user, password: pwd }),
                 {
                     headers: { 'Content-Type': 'application/json'},
                     //withCredentials is used to send the cookies (authorization)
-                    //withCredentials: true
+                    // withCredentials: true
                 }
             );
             //Could get rid of this later
@@ -113,6 +113,7 @@ const Register = () => {
 
         } catch (err) {
             if (!err?.response) {
+                console.log(err);
                 setErrMsg('No Server Response');
             } else if (err.response?.status === 409) {
                 //Might need to add this functionality in your own backend
