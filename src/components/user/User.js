@@ -7,23 +7,23 @@ import { useState } from 'react';
 
 //To persist logged in through page renders for now you can just use local storage
 //link: https://blog.bitsrc.io/5-methods-to-persisting-state-between-page-reloads-in-react-8fc9abd3fa2f 
-const SignIn = ({signedIn}) => {
+const User = ({username}) => {
 
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-if (signedIn) {
+if (username) {
   return (
     <Navbar>
         <Navbar.Brand id='sign-in'  onClick={handleShow}>
             <FontAwesomeIcon icon={faCircleUser} className='sign-in-icon' size='xl'/>
-            <Navbar.Text>Jon John</Navbar.Text>
+            <Navbar.Text>{username}</Navbar.Text>
         </Navbar.Brand>
         <Offcanvas show={show} onHide={handleClose} placement='end'>
             <OffcanvasHeader closeButton>
-                <OffcanvasTitle id='user-full-name'>Jon John</OffcanvasTitle>
+                <OffcanvasTitle id='user-full-name'>{username}</OffcanvasTitle>
             </OffcanvasHeader>
             <OffcanvasBody>
                 <ul style={{'listStyleType':'none'}}>
@@ -53,11 +53,11 @@ if (signedIn) {
         <Navbar>
             <Navbar.Brand className='sign-in'>
                 <FontAwesomeIcon icon={faCircleUser} className='sign-in-icon' size='xl'/>
-                <a href='/sign-in'>Sign in</a>
+                <a href='/login'>Sign in</a>
             </Navbar.Brand>
         </Navbar>
       )
 }
 }
 
-export default SignIn
+export default User

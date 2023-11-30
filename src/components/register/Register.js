@@ -89,7 +89,7 @@ const Register = () => {
         }
 
         //Trys to get the response from the server (post) and catches error
-        try{
+        try {
 
             //JSON.stringify destructs an object with fields user and pwd. user and 
             //pwd must match the fields used in api for users
@@ -224,7 +224,7 @@ const Register = () => {
                 <p>
                     Already registered? <br/>
                     <span className='line'>
-                        <a href='/sign-in'>Sign In</a>
+                        <a href='/login'>Sign In</a>
                     </span>
                 </p>
             </div>

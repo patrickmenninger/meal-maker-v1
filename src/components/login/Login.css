@@ -1,0 +1,16 @@
+.login-form {
+    display: inline-block;
+    border: 1px solid;
+    padding: 2em;
+    width: 40vw;
+    left: 30vw;
+    top: 20vh;
+    position: fixed;
+}
+
+.offscreen {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    display: block;
+}
