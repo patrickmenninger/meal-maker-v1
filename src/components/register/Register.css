@@ -26,3 +26,10 @@
 .hide{
     display: none;
 }
+
+.show-button{
+    background-color: white!important;
+    border-color: white!important;
+    color: black!important;
+    float: right;
+}

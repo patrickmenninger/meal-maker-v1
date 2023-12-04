@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { faCheck, faTimes, faInfoCircle, faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form } from "react-bootstrap";
@@ -168,6 +169,7 @@ const Register = () => {
                         </Form.Text>
                     </Form.Group>
                     <Form.Group>
+                        <div>
                         <Form.Label>
                             Password: 
                             <span className={validPwd ? 'valid' : 'hide'}>
@@ -176,10 +178,12 @@ const Register = () => {
                             <span className={validPwd || !pwd ? 'hide' : 'invalid'}>
                                 <FontAwesomeIcon icon={faTimes} size='xl'/>
                             </span>
-                            <Button onClick={showPwd} className='show-button'>
+                            
+                        </Form.Label>
+                        <Button onClick={showPwd} className='show-button'>
                                 <FontAwesomeIcon icon={faEye}/>
                             </Button>
-                        </Form.Label>
+                        </div>
                         <Form.Control 
                             type={pwdType} 
                             id='password'
@@ -224,7 +228,7 @@ const Register = () => {
                 <p>
                     Already registered? <br/>
                     <span className='line'>
-                        <a href='/login'>Sign In</a>
+                        <Link to='/login'>Sign In</Link>
                     </span>
                 </p>
             </div>

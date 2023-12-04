@@ -1,16 +1,4 @@
 .home-header{
-    text-align: center;
-    padding-right: 0px;
     height:2.3rem;
     background-color: white;
-}
-
-#recipe{
-    padding-right: 2.5vw;
-    font-size: 0.9em;
-}
-
-#support{
-    font-size: 0.9em;
-    padding-left: 1vw;
 }

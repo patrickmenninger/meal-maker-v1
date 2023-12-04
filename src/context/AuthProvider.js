@@ -14,9 +14,12 @@ export const AuthProvider = ({ children }) => {
 
     //{} say that the auth takes in an object instead of just like a string
     const [auth, setAuth] = useState({});
+    //Holds boolean about whether this device is trusted
+    const [persist, setPersist] = useState(JSON.parse(localStorage.getItem("persist")) || 
+    false);
 
     return (
-        <AuthContext.Provider value={{ auth, setAuth }}>
+        <AuthContext.Provider value={{ auth, setAuth, persist, setPersist }}>
             { children }
         </AuthContext.Provider>
     )
