@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { faCheck, faTimes, faInfoCircle, faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form } from "react-bootstrap";
-import './Register.css';
+import '../index.css';
 import Button from "react-bootstrap/Button";
-import axios from "../../api/axios.js";
+import axios from "../api/axios.js";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,20}/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;

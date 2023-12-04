@@ -1,10 +1,10 @@
 import React from 'react'
-import './Login.css';
+import '../index.css';
 import { useRef, useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import axios from '../../api/axios';
+import axios from '../api/axios';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../hooks/useAuth';
 
 const LOGIN_URL = '/login';
 

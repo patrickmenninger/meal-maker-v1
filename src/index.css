@@ -11,3 +11,155 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Account.js */
+#sign-in{
+  font-size: 0.7em;
+}
+
+#user-full-name{
+  font-size: 2em;
+}
+
+.user-choices{
+  font-size: 1em; 
+  text-decoration: none;
+  margin-top: 2em;
+  color: black;   
+}
+
+.user-log-out{
+  color:grey;
+}
+
+/* Admin.js */
+.admin {
+  margin-top: 2rem;
+}
+
+/* Header.js */
+#header{
+  border-bottom: 1.5px solid;
+  height: 3rem;
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  z-index: 1;
+}
+
+.logo{
+  border-right: 1.5px solid;
+  padding-right: 1vw;
+}
+
+.title{
+  font-size: 1.5em;
+  margin-left: 4em;
+}
+
+.sign-in-icon{
+  border-left: 1.5px solid;
+  padding-right: 20px;
+  padding-left: 20px
+}
+
+.username:hover{
+  cursor: pointer;
+}
+
+/* Login.js */
+.login-form {
+  display: inline-block;
+  border: 1px solid;
+  padding: 2em;
+  width: 40vw;
+  left: 30vw;
+  top: 20vh;
+  position: fixed;
+}
+
+.offscreen {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  display: block;
+}
+
+.persistCheck {
+  font-size: 0.75rem;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.persistCheck label {
+  margin: 0;
+}
+
+[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+  margin: 0 5px 2px 2px;
+}
+
+/* Navigation.js */
+.home-header{
+  height:2.3rem;
+  background-color: white;
+}
+
+/* Register.js */
+.register-form{
+  display: inline-block;
+  border: 1px solid;
+  padding: 2em;
+  width: 40vw;
+  left: 30vw;
+  top: 20vh;
+  position: fixed;
+}
+
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
+}
+
+.offscreen {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  display: block;
+}
+
+.hide{
+  display: none;
+}
+
+.show-button{
+  background-color: white!important;
+  border-color: white!important;
+  color: black!important;
+  float: right;
+}
+
+/* Home.js */
+.home-image{
+  height: 90%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.home-text{
+  font-size: 2em;
+  color: white;
+  inline-size: 34vw;
+  text-align: center;
+  position:absolute;
+  top: 49vh;
+  left: 30vw;
+}
+
