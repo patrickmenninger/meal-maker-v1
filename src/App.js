@@ -9,7 +9,19 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Admin from './components/Admin';
 import Settings from './components/Settings';
+import Recipes from './components/Recipes';
 
+
+/*
+rn you just have the image as a link from the old website
+what youll have to do is store the images as a link on your databse
+and i think you provide a way for the images to be uploaded by creating endpoints
+for all the images
+*/
+
+/*
+Finsih adding sesame chicken recipe
+*/
 
 function App() {
   return (
@@ -31,6 +43,7 @@ function App() {
               <Route path='/my-plan' />
               <Route path='/macros' />
               <Route path='/settings' element={<Settings />}/>
+              <Route path='/recipes' element={<Recipes />} />
             </Route>
 
             <Route element={<RequireAuth allowedRoles={[ 201 ]} />}>

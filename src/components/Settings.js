@@ -1,12 +1,9 @@
-import React from 'react'
+import '../index.css';
 import { Link } from 'react-router-dom'
 
 const Settings = () => {
   return (
-    <div>
-        <br/>
-        <br/>
-        <br/>
+    <div className='content'>
         <Link to='/admin'>Link</Link>
     </div>
   )
