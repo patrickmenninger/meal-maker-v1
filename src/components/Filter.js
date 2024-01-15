@@ -1,9 +1,23 @@
+import { createSearchParams, useLocation, useNavigate } from "react-router-dom"
 
 
-const Filter = () => {
+const Filter = ( {updateParams, params} ) => {
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleCheck = ( cookTime ) => {
+
+        updateParams({
+            ...params,
+            cookTime: params.cookTime + "_" + cookTime
+        })
+
+    }
 
     return (
-        <>    <h3>
+        <>    
+        <h3>
             Filter
         </h3>
             <div className="filter-cats">
@@ -12,20 +26,12 @@ const Filter = () => {
             <div>
                 <ul className="filter-list">
                     <li>
-                        <input type="checkbox"></input>
-                        <p>0 - 15 mins</p>
+                        <input type="checkbox" onChange={() => handleCheck("0-30")}></input>
+                        <p>0 - 30 mins</p>
                     </li>
                     <li>
-                        <input type="checkbox"></input>
-                        <p>16 - 30 mins</p>
-                    </li>
-                    <li>
-                        <input type="checkbox"></input>
-                        <p>31 - 45 mins</p>
-                    </li>
-                    <li>
-                        <input type="checkbox"></input>
-                        <p>46 - 60 mins</p>
+                        <input type="checkbox" onChange={() => handleCheck("31-60")}></input>
+                        <p>31 - 60 mins</p>
                     </li>
                     <li>
                         <input type="checkbox"></input>
