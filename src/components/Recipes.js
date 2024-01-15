@@ -7,7 +7,49 @@ import '../index.css';
 const Recipes = () => {
 
     const [recipes, setRecipes] = useState();
+    const [params, setParams] = useState({
+        title: "",
+        cookTime: "",
+        totalCost: ""
+    });
     const axiosPrivate = useAxiosPrivate();
+
+    const addFilters = ( paramaters ) => {
+        setParams(paramaters);
+    }
+
+    /* Put inside use effect so everytime params changes this is rerendered */
+
+
+    useEffect(() => {
+
+        let isMounted = true;
+        const controller = new AbortController();
+
+        const getRecipesFilter = async () => {
+    
+            try {
+        
+                const response = await axiosPrivate.get(`/api/v1/recipes?title=${params.title}&cookTime=${params.cookTime}&totalCost=${params.totalCost}`, {
+                    signal: controller.signal
+                });
+                isMounted && setRecipes(response.data);
+    
+    
+            } catch (err) {
+                console.error(err);
+            }
+    
+        }
+
+        getRecipesFilter();
+
+        return () => {
+            isMounted = false;
+            controller.abort();
+        }
+
+    },[params, axiosPrivate])
 
     useEffect(() => {
 
@@ -17,17 +59,17 @@ const Recipes = () => {
         const getRecipes = async () => {
             
             try {
-
-                const response = await axiosPrivate.get('/api/v1/recipes', {
+    
+                const response = await axiosPrivate.get(`/api/v1/recipes`, {
                     signal: controller.signal
                 });
                 isMounted && setRecipes(response.data);
-
-
+    
+    
             } catch (err) {
                 console.error(err);
             }
-
+    
         }
 
         getRecipes();
@@ -45,7 +87,7 @@ const Recipes = () => {
         <Container>
             <Row>
                 <Col className='br filter' xs={2}>
-                    <Filter/>
+                    <Filter updateParams={addFilters} params={params}/>
                 </Col>
                 <Col>
                     Recipes

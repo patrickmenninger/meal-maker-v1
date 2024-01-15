@@ -12,17 +12,6 @@ import Settings from './components/Settings';
 import Recipes from './components/Recipes';
 
 
-/*
-rn you just have the image as a link from the old website
-what youll have to do is store the images as a link on your databse
-and i think you provide a way for the images to be uploaded by creating endpoints
-for all the images
-*/
-
-/*
-Finsih adding sesame chicken recipe
-*/
-
 function App() {
   return (
     <div className="App">
