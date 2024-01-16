@@ -1,4 +1,3 @@
-import { createSearchParams, useLocation, useNavigate } from "react-router-dom"
 
 /*
 Working on filtering but mainly working with changing the filters
@@ -11,15 +10,31 @@ gotta find a way to reset it
 
 const Filter = ( {updateParams, params} ) => {
 
-    const navigate = useNavigate();
-    const location = useLocation();
-
     const handleCheck = ( cookTime ) => {
 
-        updateParams({
-            ...params,
-            cookTime: params.cookTime + "_" + cookTime
-        })
+        if (params.cookTime.indexOf(cookTime) !== -1) {
+
+            //Sets the temp array
+            let temp = params.cookTime
+
+            //Gets rid of the cookTime if it was already in the array
+            temp.splice(temp.indexOf(cookTime), 1);
+
+            //Updates the cookTimes without the unselected time
+            updateParams({
+                ...params,
+                cookTime: temp
+            });
+
+        } else {
+
+            //Updates the cookTimes by adding in the new cookTime
+            updateParams({
+                ...params,
+                cookTime: [...params.cookTime, cookTime]
+            });
+            
+        }
 
     }
 
@@ -34,7 +49,7 @@ const Filter = ( {updateParams, params} ) => {
             <div>
                 <ul className="filter-list">
                     <li>
-                        <input type="checkbox" onChange={() => handleCheck("0-30")}></input>
+                        <input type="checkbox" onClick={() => handleCheck("0-30")}></input>
                         <p>0 - 30 mins</p>
                     </li>
                     <li>
@@ -42,7 +57,7 @@ const Filter = ( {updateParams, params} ) => {
                         <p>31 - 60 mins</p>
                     </li>
                     <li>
-                        <input type="checkbox"></input>
+                        <input type="checkbox" onChange={() => handleCheck("60-2880")}></input>
                         <p>60+ mins</p>
                     </li>
                 </ul>

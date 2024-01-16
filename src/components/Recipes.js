@@ -18,8 +18,6 @@ const Recipes = () => {
         setParams(paramaters);
     }
 
-    /* Put inside use effect so everytime params changes this is rerendered */
-
 
     useEffect(() => {
 
@@ -29,8 +27,11 @@ const Recipes = () => {
         const getRecipesFilter = async () => {
     
             try {
+
+                //Converts the array into a string split up by '%' signs to pass to the query
+                let cookTime = params?.cookTime?.toString().replaceAll(',', '%2C')
         
-                const response = await axiosPrivate.get(`/api/v1/recipes?title=${params.title}&cookTime=${params.cookTime}&totalCost=${params.totalCost}`, {
+                const response = await axiosPrivate.get(`/api/v1/recipes?title=${params.title}&cookTime=${cookTime}&totalCost=${params.totalCost}`, {
                     signal: controller.signal
                 });
                 isMounted && setRecipes(response.data);
