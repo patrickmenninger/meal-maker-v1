@@ -9,6 +9,7 @@ const useAxiosPrivate = () => {
     const refresh = useRefreshToken();
     const { auth } = useAuth();
 
+    //Ran when the auth changes
     useEffect(() => {
 
         const requestIntercept = axiosPrivate.interceptors.request.use(
@@ -38,6 +39,7 @@ const useAxiosPrivate = () => {
             }
         )
 
+        //Cleanup
         return () => {
             axiosPrivate.interceptors.response.eject(requestIntercept);
             axiosPrivate.interceptors.response.eject(responseIntercept);

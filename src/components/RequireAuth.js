@@ -6,8 +6,14 @@ const RequireAuth = ({ allowedRoles }) => {
     const location = useLocation();
 
     return (
+        /*
+         * If the list of roles exist, compare them all to the allowed roles.
+         * If one is found then the children components can be displayed
+         */
         auth?.roles?.find(role => allowedRoles?.includes(role))
-            //Outlet represents all the child components of RequireAuth. Means that all the children components can be protected
+            //Outlet represents all the child components of RequireAuth. 
+            //Means that all the children components can be protected.
+            //The children components are displayed if the role isn't found
             ? <Outlet />
             //Checks if the user is logged in
             : auth?.username

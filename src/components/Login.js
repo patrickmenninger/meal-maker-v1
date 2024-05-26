@@ -10,9 +10,7 @@ const LOGIN_URL = '/login';
 
 const Login = () => {
 
-  //Look into why the curly brackets are used around setAuth
-  //Maybe because its a function
-  //Also could be that it is grabbing setAuth because multiple things where contained in AuthContext
+  //Brackets used to grab certain values
   const { setAuth, persist, setPersist } = useAuth();
 
   const navigate = useNavigate();
@@ -27,15 +25,23 @@ const Login = () => {
 
   const [errMsg, setErrMsg] = useState('');
 
+  //When the page loads, clear the stored username and set the focus
   useEffect(() => {
     localStorage.removeItem('username');
     usernameRef.current.focus();
   }, [])
 
+  //If the username or password is changed clear error message
   useEffect(() => {
     setErrMsg('');
   }, [username, password])
 
+  /*
+   * On form submit, send to Java application the username and password in the package.
+   * Get the access token and roles from the response from the Java Application.
+   * Updates the Auth to the new values and then clear the username and password fields.
+   * It then redirects the user back to the page they came from.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -83,10 +89,12 @@ const Login = () => {
 
   }
 
+  //Toggles wether the user wants the login to stay
   const togglePersist = () => {
     setPersist(prev => !prev);
   }
 
+  //If persist changes, then update the item in local storage
   useEffect(() => {
     localStorage.setItem('persist', persist);
   }, [persist])

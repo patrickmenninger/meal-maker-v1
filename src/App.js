@@ -23,7 +23,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-          <Route path='unauthorized' />
+          <Route path='/unauthorized' />
 
           {/* private routes */}
           <Route element={<PersistLogin />}> 

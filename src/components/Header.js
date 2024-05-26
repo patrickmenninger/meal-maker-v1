@@ -11,6 +11,7 @@ const Header = () => {
   return (
     <div id='header'>
     <Navbar id='header'>
+        {/* Contains logo, the name, and the account username */}
         <Container fluid>
             <Navbar.Brand href='/' className='logo'>
                 <FontAwesomeIcon icon={faPlateWheat} style={{'color': 'black'}} size='xl'/>
@@ -21,6 +22,7 @@ const Header = () => {
             </Navbar.Brand>
         </Container>
     </Navbar>
+    {/* Navigation component under the header */}
     <Navigation />
     </div>
   )

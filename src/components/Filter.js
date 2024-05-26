@@ -12,6 +12,7 @@ const Filter = ( {updateParams, params} ) => {
 
     const handleCheck = ( cookTime ) => {
 
+        //If the cookTime is in the list of cook times
         if (params.cookTime.indexOf(cookTime) !== -1) {
 
             //Sets the temp array
@@ -49,7 +50,7 @@ const Filter = ( {updateParams, params} ) => {
             <div>
                 <ul className="filter-list">
                     <li>
-                        <input type="checkbox" onClick={() => handleCheck("0-30")}></input>
+                        <input type="checkbox" onChange={() => handleCheck("0-30")}></input>
                         <p>0 - 30 mins</p>
                     </li>
                     <li>
