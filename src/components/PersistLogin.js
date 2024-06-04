@@ -10,10 +10,14 @@ const PersistLogin = () => {
     const refresh = useRefreshToken();
     const { auth, persist } = useAuth();
 
+    //Checks if the user has an access token associated with there account.
+    //If they don't then one is generated with the verifyRefreshToken function
+    //and if they do have one then the component is no longer loading.
     useEffect(() => {
 
         let isMounted = true;
 
+        //Defines a function that is used to make sure the refresh token is valid
         const verifyRefreshToken = async () => {
             try {
                 await refresh();
@@ -30,6 +34,7 @@ const PersistLogin = () => {
 
     }, [auth?.accessToken, refresh])
 
+    //Everytime the component is loading or the access token is changed
     useEffect(() => {
 
         console.log(`isLoading: ${isLoading}`);
@@ -37,6 +42,7 @@ const PersistLogin = () => {
 
     }, [ isLoading, auth?.accessToken ])
 
+    //If persist is true and isLoading is false then the children (outlet) is made
   return (
     <>
         {//Outlet used for all children components

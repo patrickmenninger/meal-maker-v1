@@ -18,19 +18,21 @@ const Recipes = () => {
         setParams(paramaters);
     }
 
-
+    //Called everytime the params change
     useEffect(() => {
 
         let isMounted = true;
         const controller = new AbortController();
 
+        //Gets the list of recipes from the Java Application
         const getRecipesFilter = async () => {
     
             try {
 
                 //Converts the array into a string split up by '%' signs to pass to the query
                 let cookTime = params?.cookTime?.toString().replaceAll(',', '%2C')
-        
+
+                //Makes the request using the params in the URL
                 const response = await axiosPrivate.get(`/api/v1/recipes?title=${params.title}&cookTime=${cookTime}&totalCost=${params.totalCost}`, {
                     signal: controller.signal
                 });
@@ -45,6 +47,7 @@ const Recipes = () => {
 
         getRecipesFilter();
 
+        //Cleanup function
         return () => {
             isMounted = false;
             controller.abort();
@@ -52,6 +55,7 @@ const Recipes = () => {
 
     },[params, axiosPrivate])
 
+    //Gets all the recipes
     useEffect(() => {
 
         let isMounted = true;
@@ -88,6 +92,7 @@ const Recipes = () => {
         <Container>
             <Row>
                 <Col className='br filter' xs={2}>
+                    {/* Passes in the setParams function */}
                     <Filter updateParams={addFilters} params={params}/>
                 </Col>
                 <Col>

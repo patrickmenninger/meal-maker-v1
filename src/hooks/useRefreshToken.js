@@ -5,6 +5,8 @@ const useRefreshToken = () => {
 
     const { setAuth } = useAuth();
 
+    //Creates a function to return whenver useRefreshToken is called
+    //This function returns the access token for the user
     const refresh = async () => {
         const response = await axios.get('/refresh', {
             withCredentials: true

@@ -79,6 +79,10 @@ const Register = () => {
         }
     }
 
+    /*
+     * On submit of the form. If either the username or password doesn't pass the REGEX, it is considered invalid.
+     * Trys to post the form to the server with the username and password in the request.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -131,17 +135,25 @@ const Register = () => {
     //Can add accessibility maybe later (aria-live, etc.)
   return (
     <>
+        {/* Checks for successful form submission */}
         {success ? (
+            /* If successful the user is prompted to go to the sign in page */
             <div>
                 <h1>Success!</h1>
-                <a href='/sign-in'>Sign In</a>
+                <a href='/login'>Sign In</a>
             </div>
         ) : (
+            //If the person isn't successfully logged in, then the form is displayed
             <div className='register-form'>
+                {/* Displays the error message if there exists one, else it is offscreen */}
                 <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'}>{errMsg}</p>
                 <div>Register</div>
                 <Form>
                     <Form.Group>
+                        {/*
+                          * Username field. Checks for a valid name and if it is valid a checkmark is displayed
+                          * If the name is invalid and the user exists a red x is displayed
+                          */}
                         <Form.Label>
                             Username: 
                             <span className={validName ? 'valid' : 'hide'}>
@@ -151,6 +163,11 @@ const Register = () => {
                                 <FontAwesomeIcon icon={faTimes} size='xl'/>
                             </span>
                         </Form.Label>
+                        {/*
+                          * On change set the value of user based on the current text in the field (onChange).
+                          * ref is to set the focus to the user field
+                          * onBlur is when the user clicks off the field, onFocus is when they click on
+                          */}
                         <Form.Control 
                             type='text' 
                             id='username'
@@ -161,6 +178,10 @@ const Register = () => {
                             onFocus={() => setUserFocus(true)}
                             onBlur={() => setUserFocus(false)}
                         />
+                        {/* 
+                          * If the user is focused and there is something in the field and the name isn't valid
+                          * the instructions are displayed, else they are offscreen
+                          */}
                         <Form.Text id='uidnote' className={userFocus && user && !validName ? 'instructions' : 'offscreen'}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             4 to 20 characters. <br />
@@ -170,20 +191,28 @@ const Register = () => {
                     </Form.Group>
                     <Form.Group>
                         <div>
-                        <Form.Label>
-                            Password: 
-                            <span className={validPwd ? 'valid' : 'hide'}>
-                                <FontAwesomeIcon icon={faCheck} size='xl'/>
-                            </span>
-                            <span className={validPwd || !pwd ? 'hide' : 'invalid'}>
-                                <FontAwesomeIcon icon={faTimes} size='xl'/>
-                            </span>
-                            
-                        </Form.Label>
-                        <Button onClick={showPwd} className='show-button'>
+                            {/*
+                              * If the password is valid a checkmark appears.
+                              * If the password isn't valid and the password exists then an x appears
+                              */}
+                            <Form.Label>
+                                Password: 
+                                <span className={validPwd ? 'valid' : 'hide'}>
+                                    <FontAwesomeIcon icon={faCheck} size='xl'/>
+                                </span>
+                                <span className={validPwd || !pwd ? 'hide' : 'invalid'}>
+                                    <FontAwesomeIcon icon={faTimes} size='xl'/>
+                                </span>
+                            </Form.Label>
+                            {/* On click changed the password type to text and shows it */}
+                            <Button onClick={showPwd} className='show-button'>
                                 <FontAwesomeIcon icon={faEye}/>
                             </Button>
                         </div>
+                        {/*
+                          * Type changes based on what the user selects.
+                          * onChange it changes the password variable
+                          */}
                         <Form.Control 
                             type={pwdType} 
                             id='password'
@@ -218,11 +247,18 @@ const Register = () => {
                             onFocus={() => setMatchFocus(true)}
                             onBlur={() => setMatchFocus(false)}
                         />
+                        {/*
+                          * If the match field is focused and the passwords aren't a valid match then display the instructions
+                          */}
                         <Form.Text id='uidnote' className={matchFocus && !validMatch ? 'instructions' : 'offscreen'}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Must match the first password input field.
                         </Form.Text>
                     </Form.Group>
+                    {/*
+                      * On click to submit the form. The button is disabled if the name is invalid,
+                      * if the password is invalid, and if the passwords don't match
+                      */}
                     <Button onClick={handleSubmit} disabled={!validName || !validPwd || !validMatch ? true : false}>Submit</Button>
                 </Form>
                 <p>
