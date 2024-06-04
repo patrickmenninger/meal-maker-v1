@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,59 +20,9 @@ code {
   margin-top: 2rem;
 }
 
-/* Account.js */
-#sign-in{
-  font-size: 0.7em;
-}
-
-#user-full-name{
-  font-size: 2em;
-}
-
-.user-choices{
-  font-size: 1em; 
-  text-decoration: none;
-  margin-top: 2em;
-  color: black;   
-}
-
-.user-log-out{
-  color:grey;
-}
-
 /* Admin.js */
 .admin {
   margin-top: 2rem;
-}
-
-/* Header.js */
-#header{
-  border-bottom: 1.5px solid;
-  height: 3rem;
-  position: sticky;
-  top: 0px;
-  background-color: white;
-  z-index: 1;
-}
-
-.logo{
-  border-right: 1.5px solid;
-  padding-right: 1vw;
-}
-
-.title{
-  font-size: 1.5em;
-  margin-left: 4em;
-}
-
-.sign-in-icon{
-  border-left: 1.5px solid;
-  padding-right: 20px;
-  padding-left: 20px
-}
-
-.username:hover{
-  cursor: pointer;
 }
 
 /* Login.js */

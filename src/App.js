@@ -3,7 +3,7 @@ import {Route, Routes} from 'react-router-dom'
 import Layout from './Layout'
 import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
-import Home from './components/home/Home'
+import Home from './components/Home'
 import Header from './components/Header';
 import Register from './components/Register';
 import Login from './components/Login';

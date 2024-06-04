@@ -62,12 +62,10 @@ if (username) {
   )
 } else {
     return (
-        <Navbar>
-            <Navbar.Brand className='sign-in'>
-                <FontAwesomeIcon icon={faCircleUser} className='sign-in-icon' size='xl'/>
-                <a href='/login'>Sign in</a>
-            </Navbar.Brand>
-        </Navbar>
+        <div className="ml-6 pl-4 border-l border-slate-700">
+            <FontAwesomeIcon icon={faCircleUser} className="text-stone-700 " size='2xl'/>
+            <a href='/login' className="text-xl ml-4 text-stone-700 no-underline hover:text-blue-500">Sign in</a>
+        </div>
       )
 }
 }

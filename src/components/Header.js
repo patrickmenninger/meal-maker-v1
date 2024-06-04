@@ -1,7 +1,5 @@
 import '../index.css';
 import Navigation from './Navigation.js';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlateWheat } from '@fortawesome/free-solid-svg-icons';
 import Account from './Account.js';
@@ -9,22 +7,21 @@ import Account from './Account.js';
 const Header = () => {
 
   return (
-    <div id='header'>
-    <Navbar id='header'>
-        {/* Contains logo, the name, and the account username */}
-        <Container fluid>
-            <Navbar.Brand href='/' className='logo'>
-                <FontAwesomeIcon icon={faPlateWheat} style={{'color': 'black'}} size='xl'/>
-            </Navbar.Brand>
-            <Navbar.Text className='title'>M E A L M A K E R</Navbar.Text>
-            <Navbar.Brand className='username'>
-                <Account/>
-            </Navbar.Brand>
-        </Container>
-    </Navbar>
-    {/* Navigation component under the header */}
-    <Navigation />
-    </div>
+    <header>
+      <nav className="flex justify-between items-center pt-6 pb-4 px-4 shadow-xl">
+          {/* Contains logo, the name, and the account username */}
+          <div className="flex items-center">
+            <a href='/'>
+              <FontAwesomeIcon icon={faPlateWheat} className="text-stone-700 pr-4" size='2xl'/>
+            </a>
+            <h5 className="text-stone-700 mb-0">M E A L M A K E R</h5>
+          </div>
+          <div className="flex items-center">
+            <Navigation />
+            <Account/>
+          </div>
+      </nav>
+    </header>
   )
 }
 

@@ -1,17 +1,26 @@
-import Navbar from 'react-bootstrap/Navbar';
-import { Nav } from 'react-bootstrap';
 import '../index.css';
 
 const Navigation = () => {
   return (
-    <Navbar data-bs-theme='light' className='home-header justify-content-center'>
-        <Nav>
+    <div>
+      <nav className="md:hidden">
+        Not made for small screens yet
+      </nav>
+      <nav className="items-center py-0 hidden md:flex">
+          <ul className='flex items-center gap-x-8 mb-0'>
             {/* Navlinks to the home page, the list of recipes, and the support */}
-            <Nav.Link className='px-5' href='/'>Home</Nav.Link>
-            <Nav.Link className='px-5' href='/recipes'>Recipes</Nav.Link>
-            <Nav.Link className='px-5' href='/support'>Support</Nav.Link>
-        </Nav>
-    </Navbar>
+            <li>
+              <a href='/' className='text-stone-700 no-underline hover:text-blue-500'>Home</a>
+            </li>
+            <li>
+              <a href='/recipes' className='text-stone-700 no-underline hover:text-blue-500'>Recipes</a>
+            </li>
+            <li>
+              <a href='/support' className='text-stone-700 no-underline hover:text-blue-500'>Support</a>
+            </li>
+          </ul>
+      </nav>
+    </div>
   )
 }
 
