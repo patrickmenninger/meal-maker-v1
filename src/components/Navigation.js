@@ -10,13 +10,13 @@ const Navigation = () => {
           <ul className='flex items-center gap-x-8 mb-0'>
             {/* Navlinks to the home page, the list of recipes, and the support */}
             <li>
-              <a href='/' className='text-stone-700 no-underline hover:text-blue-500'>Home</a>
+              <a href='/' className='text-grey no-underline hover:text-tan'>Home</a>
             </li>
             <li>
-              <a href='/recipes' className='text-stone-700 no-underline hover:text-blue-500'>Recipes</a>
+              <a href='/recipes' className='text-grey no-underline hover:text-tan'>Recipes</a>
             </li>
             <li>
-              <a href='/support' className='text-stone-700 no-underline hover:text-blue-500'>Support</a>
+              <a href='/support' className='text-grey no-underline hover:text-tan'>Support</a>
             </li>
           </ul>
       </nav>

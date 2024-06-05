@@ -1,7 +1,6 @@
 import React from 'react'
 import '../index.css';
 import { useRef, useState, useEffect } from 'react';
-import { Form, Button } from 'react-bootstrap';
 import axios from '../api/axios';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
@@ -100,53 +99,67 @@ const Login = () => {
   }, [persist])
 
   return (
-    <div className='login-form'>
-      <p className={errMsg ? 'errmsg' : 'offscreen'}>{errMsg}</p>
-      <div>Login</div>
-      <Form>
-        <Form.Group>
-          <Form.Label>
-            Username:
-          </Form.Label>
-          <Form.Control
-            type='text'
-            id='username'
-            ref={usernameRef}
-            autoComplete='off'
-            required
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>
-            Password:
-          </Form.Label>
-          <Form.Control
-            type='password'
-            id='password'
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            value={password}
-          />
-        </Form.Group>
-        <Button className='login-btn' onClick={handleSubmit} disabled={!username || !password ? true : false}>Login</Button>
-        <div className='persistCheck'>
-          <input 
-            type='checkbox'
-            id='persist'
-            onChange={togglePersist}
-            checked={persist}
-          />
-          <label htmlFor='persist'>Trust this device?</label>
+    <div className="bg-off-white h-[91vh]">
+      <div className="block mx-auto w-[400px]">
+        <p className={errMsg ? 'errmsg' : 'offscreen'}>{errMsg}</p>
+        <div className="text-center py-4 text-3xl">Login</div>
+        <div className="border-[1.5px] border-grey p-4 bg-tan rounded-xl">
+          <form>
+
+            <div className="items-center">
+              <label htmlFor="username" className="text-grey text-lg">
+                Username:
+              </label>
+              <input
+                className="w-full border-[1.5px] border-brown rounded-md px-2 py-1 bg-off-white"
+                title="Please enter Username"
+                placeholder=""
+                spellCheck="false"
+                type='text'
+                name='username'
+                ref={usernameRef}
+                autoComplete='off'
+                required
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+              />
+            </div>
+
+            <div className="my-4">
+              <label for="password" className="text-grey text-lg">
+                Password:
+              </label>
+              <input
+                className="w-full border-[1.5px] border-brown rounded-md px-2 py-1 bg-off-white"
+                title="Please enter Password"
+                placeholder=""
+                type='password'
+                name='password'
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                value={password}
+              />
+            </div>
+
+            <button type="button" className='block w-4/6 bg-brown rounded-lg py-2 mx-auto' onClick={handleSubmit} disabled={!username || !password ? true : false}>Login</button>
+
+            <div className='persistCheck'>
+              <input 
+                type='checkbox'
+                id='persist'
+                onChange={togglePersist}
+                checked={persist}
+              />
+              <label htmlFor='persist'>Trust this device?</label>
+            </div>
+
+          </form>
         </div>
-      </Form>
-      <p>
-        Need an account? <br />
-        <span>
+        <div className="mt-4 border-[1.5px] border-grey p-2 bg-tan rounded-xl text-center">
+          <p>Need an account?</p>
           <Link to='/register'>Sign Up</Link>
-        </span>
-      </p>
+        </div>
+      </div>
     </div>
   )
 }
