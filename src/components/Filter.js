@@ -49,17 +49,17 @@ const Filter = ( {updateParams, params} ) => {
             </div>
             <div>
                 <ul className="filter-list">
-                    <li>
+                    <li className="filter-item">
                         <input type="checkbox" onChange={() => handleCheck("0-30")}></input>
-                        <p>0 - 30 mins</p>
+                        <div>0 - 30 mins</div>
                     </li>
-                    <li>
+                    <li className="filter-item">
                         <input type="checkbox" onChange={() => handleCheck("31-60")}></input>
-                        <p>31 - 60 mins</p>
+                        <div>31 - 60 mins</div>
                     </li>
-                    <li>
+                    <li className="filter-item">
                         <input type="checkbox" onChange={() => handleCheck("60-2880")}></input>
-                        <p>60+ mins</p>
+                        <div>60+ mins</div>
                     </li>
                 </ul>
             </div>

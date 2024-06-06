@@ -21,6 +21,7 @@ function App() {
 
           {/* public routes */}
           <Route path='/' element={<Home />} />
+          <Route path='/recipes' element={<Recipes />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/unauthorized' />
@@ -32,7 +33,6 @@ function App() {
               <Route path='/my-plan' />
               <Route path='/macros' />
               <Route path='/settings' element={<Settings />}/>
-              <Route path='/recipes' element={<Recipes />} />
             </Route>
 
             <Route element={<RequireAuth allowedRoles={[ 201 ]} />}>

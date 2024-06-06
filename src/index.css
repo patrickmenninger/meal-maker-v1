@@ -47,12 +47,6 @@ code {
   margin: 0;
 }
 
-[type="checkbox"] {
-  height: 20px;
-  width: 20px;
-  margin: 0 5px 2px 2px;
-}
-
 /* Navigation.js */
 .home-header{
   height:2.3rem;
@@ -107,6 +101,34 @@ code {
 }
 
 /* Recipes.js */
+.container-recipes {
+
+  gap: 10px;
+  grid-template-areas: 
+    'filter recipes recipes recipes recipes'
+    'filter recipes recipes recipes recipes'
+    'pages pages pages pages pages';
+
+}
+
+.pages {
+
+  grid-area: pages;
+
+}
+
+.recipes {
+
+  grid-area: recipes;
+
+}
+
+.filter {
+
+  grid-area: filter;
+
+}
+
 .br {
   border-right: 1px solid;
 }
@@ -115,32 +137,12 @@ code {
   text-align: center;
 }
 
-.filter {
-  width: 30%;
-}
+.filter-item {
 
-.filter-cats {
-  text-align: center;
-  font-size: 20px;
-}
-
-.filter-options {
-  text-align: center;
-}
-
-.filter-list {
-  list-style: none;
-  display: grid;
-  width: 100%;
-}
-
-.filter-list > li {
   display: flex;
-}
+  align-content: center;
+  padding-bottom: 1rem;
 
-.filter-list > li > input {
-  height: 1rem;
-  width: 1rem;
 }
 
 .recipe-list {

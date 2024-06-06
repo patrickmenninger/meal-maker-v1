@@ -102,11 +102,11 @@ const Login = () => {
     <div className="bg-off-white h-[91vh]">
       <div className="block mx-auto w-[400px]">
         <p className={errMsg ? 'errmsg' : 'offscreen'}>{errMsg}</p>
-        <div className="text-center py-4 text-3xl">Login</div>
+        <div className="text-center py-4 text-3xl text-grey">Login</div>
         <div className="border-[1.5px] border-grey p-4 bg-tan rounded-xl">
           <form>
 
-            <div className="items-center">
+            <div>
               <label htmlFor="username" className="text-grey text-lg">
                 Username:
               </label>
@@ -156,7 +156,7 @@ const Login = () => {
           </form>
         </div>
         <div className="mt-4 border-[1.5px] border-grey p-2 bg-tan rounded-xl text-center">
-          <p>Need an account?</p>
+          <p className="mb-1 text-grey">Need an account?</p>
           <Link to='/register'>Sign Up</Link>
         </div>
       </div>

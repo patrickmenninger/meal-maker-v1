@@ -1,10 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { faCheck, faTimes, faInfoCircle, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Form } from "react-bootstrap";
 import '../index.css';
-import Button from "react-bootstrap/Button";
 import axios from "../api/axios.js";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,20}/;
@@ -66,18 +64,6 @@ const Register = () => {
     useEffect(() => {
         setErrMsg('');
     }, [user, pwd, matchPwd])
-
-
-    //Sets the type of field to show the password
-    const [pwdType, setPwdType] = useState('password');
-
-    const showPwd = () => {
-        if (pwdType === 'password') {
-            setPwdType('text')
-        } else {
-            setPwdType('password')
-        }
-    }
 
     /*
      * On submit of the form. If either the username or password doesn't pass the REGEX, it is considered invalid.
@@ -143,130 +129,135 @@ const Register = () => {
                 <a href='/login'>Sign In</a>
             </div>
         ) : (
-            //If the person isn't successfully logged in, then the form is displayed
-            <div className='register-form'>
-                {/* Displays the error message if there exists one, else it is offscreen */}
-                <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'}>{errMsg}</p>
-                <div>Register</div>
-                <Form>
-                    <Form.Group>
-                        {/*
-                          * Username field. Checks for a valid name and if it is valid a checkmark is displayed
-                          * If the name is invalid and the user exists a red x is displayed
-                          */}
-                        <Form.Label>
-                            Username: 
-                            <span className={validName ? 'valid' : 'hide'}>
-                                <FontAwesomeIcon icon={faCheck} size='xl'/>
-                            </span>
-                            <span className={validName || !user ? 'hide' : 'invalid'}>
-                                <FontAwesomeIcon icon={faTimes} size='xl'/>
-                            </span>
-                        </Form.Label>
-                        {/*
-                          * On change set the value of user based on the current text in the field (onChange).
-                          * ref is to set the focus to the user field
-                          * onBlur is when the user clicks off the field, onFocus is when they click on
-                          */}
-                        <Form.Control 
-                            type='text' 
-                            id='username'
-                            ref={userRef}
-                            autoComplete="off"
-                            onChange={(e) => setUser(e.target.value)}
-                            required
-                            onFocus={() => setUserFocus(true)}
-                            onBlur={() => setUserFocus(false)}
-                        />
-                        {/* 
-                          * If the user is focused and there is something in the field and the name isn't valid
-                          * the instructions are displayed, else they are offscreen
-                          */}
-                        <Form.Text id='uidnote' className={userFocus && user && !validName ? 'instructions' : 'offscreen'}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            4 to 20 characters. <br />
-                            Must begin with a letter. <br />
-                            Letters, numbers, underscores, hyphens allowed.
-                        </Form.Text>
-                    </Form.Group>
-                    <Form.Group>
-                        <div>
+            <div className="bg-off-white h-[91vh]">
+                {/*If the person isn't successfully logged in, then the form is displayed*/}
+                <div className="block mx-auto w-[400px]">
+                    {/* Displays the error message if there exists one, else it is offscreen */}
+                    <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'}>{errMsg}</p>
+                    <div className="text-center py-4 text-3xl text-grey">Register</div>
+                    <div className="border-[1.5px] border-grey p-4 bg-tan rounded-xl">
+                        <form>
+                            <div>
+                                {/*
+                                * Username field. Checks for a valid name and if it is valid a checkmark is displayed
+                                * If the name is invalid and the user exists a red x is displayed
+                                */}
+                                <label htmlFor="username" className="text-grey text-lg">
+                                    Username: 
+                                    <span className={validName ? 'valid' : 'hide'}>
+                                        <FontAwesomeIcon icon={faCheck} size='xl'/>
+                                    </span>
+                                    <span className={validName || !user ? 'hide' : 'invalid'}>
+                                        <FontAwesomeIcon icon={faTimes} size='xl'/>
+                                    </span>
+                                </label>
+                                {/*
+                                * On change set the value of user based on the current text in the field (onChange).
+                                * ref is to set the focus to the user field
+                                * onBlur is when the user clicks off the field, onFocus is when they click on
+                                */}
+                                <input
+                                    className="w-full border-[1.5px] border-brown rounded-md px-2 py-1 bg-off-white"
+                                    title="Please enter Username"
+                                    placeholder=""
+                                    spellCheck="false"
+                                    type='text' 
+                                    name='username'
+                                    ref={userRef}
+                                    autoComplete="off"
+                                    onChange={(e) => setUser(e.target.value)}
+                                    required
+                                    onFocus={() => setUserFocus(true)}
+                                    onBlur={() => setUserFocus(false)}
+                                />
+                                {/* 
+                                * If the user is focused and there is something in the field and the name isn't valid
+                                * the instructions are displayed, else they are offscreen
+                                */}
+                                <div id='uidnote' className={userFocus && user && !validName ? 'instructions' : 'offscreen'}>
+                                    <FontAwesomeIcon icon={faInfoCircle} />
+                                    4 to 20 characters. <br />
+                                    Must begin with a letter. <br />
+                                    Letters, numbers, underscores, hyphens allowed.
+                                </div>
+                            </div>
+                            <div  className="my-4">
+                                {/*
+                                * If the password is valid a checkmark appears.
+                                * If the password isn't valid and the password exists then an x appears
+                                */}
+                                <label htmlFor="password" className="text-grey text-lg">
+                                    Password: 
+                                    <span className={validPwd ? 'valid' : 'hide'}>
+                                        <FontAwesomeIcon icon={faCheck} size='xl'/>
+                                    </span>
+                                    <span className={validPwd || !pwd ? 'hide' : 'invalid'}>
+                                        <FontAwesomeIcon icon={faTimes} size='xl'/>
+                                    </span>
+                                </label>
+                                {/*
+                                * Type changes based on what the user selects.
+                                * onChange it changes the password variable
+                                */}
+                                <input
+                                    className="w-full border-[1.5px] border-brown rounded-md px-2 py-1 bg-off-white"
+                                    title="Please enter Password"
+                                    placeholder=""
+                                    type="password"
+                                    name='password'
+                                    autoComplete="off"
+                                    onChange={(e) => setPwd(e.target.value)}
+                                    required
+                                    onFocus={() => setPwdFocus(true)}
+                                    onBlur={() => setPwdFocus(false)}
+                                />
+                                <div id='uidnote' className={pwdFocus && !validPwd ? 'instructions' : 'offscreen'}>
+                                    <FontAwesomeIcon icon={faInfoCircle} />
+                                    At least 8 characters. <br />
+                                    Must include uppercase and lowercase letters, a number and a special charcter. <br />
+                                    Allowed special characters: !, @, #, $, %, ^, &
+                                </div>
+                            </div>
+                            <div className="my-4">
+                                <label htmlFor="confirmPwd" className="text-grey text-lg">
+                                    Confirm Password: 
+                                    <span className={validMatch && matchPwd ? 'valid' : 'hide'}>
+                                        <FontAwesomeIcon icon={faCheck} size='xl'/>
+                                    </span>
+                                    <span className={validMatch || !matchPwd ? 'hide' : 'invalid'}>
+                                        <FontAwesomeIcon icon={faTimes} size='xl'/>
+                                    </span>
+                                </label>
+                                <input
+                                    title="Re-enter Password"
+                                    className="w-full border-[1.5px] border-brown rounded-md px-2 py-1 bg-off-white"
+                                    name="confirmPwd"
+                                    type="password"
+                                    onChange={(e) => setMatchPwd(e.target.value)}
+                                    required
+                                    onFocus={() => setMatchFocus(true)}
+                                    onBlur={() => setMatchFocus(false)}
+                                />
+                                {/*
+                                * If the match field is focused and the passwords aren't a valid match then display the instructions
+                                */}
+                                <div id='uidnote' className={matchFocus && !validMatch ? 'instructions' : 'offscreen'}>
+                                    <FontAwesomeIcon icon={faInfoCircle} />
+                                    Must match the first password input field.
+                                </div>
+                            </div>
                             {/*
-                              * If the password is valid a checkmark appears.
-                              * If the password isn't valid and the password exists then an x appears
-                              */}
-                            <Form.Label>
-                                Password: 
-                                <span className={validPwd ? 'valid' : 'hide'}>
-                                    <FontAwesomeIcon icon={faCheck} size='xl'/>
-                                </span>
-                                <span className={validPwd || !pwd ? 'hide' : 'invalid'}>
-                                    <FontAwesomeIcon icon={faTimes} size='xl'/>
-                                </span>
-                            </Form.Label>
-                            {/* On click changed the password type to text and shows it */}
-                            <Button onClick={showPwd} className='show-button'>
-                                <FontAwesomeIcon icon={faEye}/>
-                            </Button>
-                        </div>
-                        {/*
-                          * Type changes based on what the user selects.
-                          * onChange it changes the password variable
-                          */}
-                        <Form.Control 
-                            type={pwdType} 
-                            id='password'
-                            autoComplete="off"
-                            onChange={(e) => setPwd(e.target.value)}
-                            required
-                            onFocus={() => setPwdFocus(true)}
-                            onBlur={() => setPwdFocus(false)}
-                        />
-                        <Form.Text id='uidnote' className={pwdFocus && !validPwd ? 'instructions' : 'offscreen'}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            At least 8 characters. <br />
-                            Must include uppercase and lowercase letters, a number and a special charcter. <br />
-                            Allowed special characters: !, @, #, $, %, ^, &
-                        </Form.Text>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>
-                            Confirm Password: 
-                            <span className={validMatch && matchPwd ? 'valid' : 'hide'}>
-                                <FontAwesomeIcon icon={faCheck} size='xl'/>
-                            </span>
-                            <span className={validMatch || !matchPwd ? 'hide' : 'invalid'}>
-                                <FontAwesomeIcon icon={faTimes} size='xl'/>
-                            </span>
-                        </Form.Label>
-                        <Form.Control 
-                            type={pwdType} 
-                            id='confirm_pwd'
-                            onChange={(e) => setMatchPwd(e.target.value)}
-                            required
-                            onFocus={() => setMatchFocus(true)}
-                            onBlur={() => setMatchFocus(false)}
-                        />
-                        {/*
-                          * If the match field is focused and the passwords aren't a valid match then display the instructions
-                          */}
-                        <Form.Text id='uidnote' className={matchFocus && !validMatch ? 'instructions' : 'offscreen'}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            Must match the first password input field.
-                        </Form.Text>
-                    </Form.Group>
-                    {/*
-                      * On click to submit the form. The button is disabled if the name is invalid,
-                      * if the password is invalid, and if the passwords don't match
-                      */}
-                    <Button onClick={handleSubmit} disabled={!validName || !validPwd || !validMatch ? true : false}>Submit</Button>
-                </Form>
-                <p>
-                    Already registered? <br/>
-                    <span className='line'>
+                            * On click to submit the form. The button is disabled if the name is invalid,
+                            * if the password is invalid, and if the passwords don't match
+                            */}
+                            <button type="button" className='block w-4/6 bg-brown rounded-lg py-2 mx-auto' onClick={handleSubmit} disabled={!validName || !validPwd || !validMatch ? true : false}>Submit</button>
+                        </form>
+                    </div>
+                    <div className="mt-4 border-[1.5px] border-grey p-2 bg-tan rounded-xl text-center">
+                        <p className="text-grey mb-1">Already registered? </p>
                         <Link to='/login'>Sign In</Link>
-                    </span>
-                </p>
+                    </div>
+                </div>
             </div>
             )}
     </>
