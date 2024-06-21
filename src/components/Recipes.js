@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
-import Filter from './Filter';
+import Filter from './filter/Filter';
 import '../index.css';
 
 const Recipes = () => {
@@ -88,7 +88,7 @@ const Recipes = () => {
 
   return (
     <div className="block lg:grid container-recipes">
-        <div className="hidden lg:block filter border-r-2 w-5/6 pt-4 pl-3">
+        <div className="hidden lg:block filter border-r-2 border-grey w-5/6 bg-off-white pt-4 pl-4 pr-2">
             {/* Passes in the setParams function */}
             <Filter updateParams={addFilters} params={params}/>
         </div>

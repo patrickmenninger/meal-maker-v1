@@ -17,8 +17,26 @@ code {
     monospace;
 }
 
+.checkbox {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1rem;
+  width: 1rem;
+  background-color: black;
+  border: 2px black solid;
+
+}
+
 .content {
   margin-top: 2rem;
+}
+
+input[type='checkbox']:checked {
+
+  color: rgb(169 146 130 / 1);
+
 }
 
 /* Admin.js */
@@ -137,11 +155,33 @@ code {
   text-align: center;
 }
 
+.filter-cats {
+
+  
+
+}
+
 .filter-item {
 
   display: flex;
-  align-content: center;
-  padding-bottom: 1rem;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  color: rgb(101 80 84 / 1);
+
+}
+
+.filter-item > input[type=checkbox] {
+
+  accent-color: rgb(101 80 84 / 1);
+  height: 1rem;
+  width: 1rem;
+
+}
+
+.filter-item > div {
+
+  padding-left: 0.5rem;
 
 }
 
