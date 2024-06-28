@@ -8,8 +8,9 @@ const Recipes = () => {
     const [recipes, setRecipes] = useState();
     const [params, setParams] = useState({
         title: "",
-        cookTime: "",
-        totalCost: ""
+        cookTime: [],
+        totalCost: "",
+        protein: [],
     });
     const axiosPrivate = useAxiosPrivate();
 
@@ -45,6 +46,7 @@ const Recipes = () => {
         }
 
         getRecipesFilter();
+        console.log(params)
 
         //Cleanup function
         return () => {

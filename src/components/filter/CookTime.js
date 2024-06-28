@@ -47,11 +47,10 @@ const CookTime = ({updateParams, params}) => {
             Cook Time
             <FontAwesomeIcon icon={show ? faTimes: faPlus} className=""/>
         </div>
-        <div className={show ? '' : 'hidden'}>
+        <div className={show ? 'max-w-36' : 'hidden'}>
             <ul className="filter-list">
                 <li className="filter-item">
                     <input type="checkbox" onChange={() => handleCheck("0-30")}></input>
-                    <span className="checkbox" ></span>
                     <div>0 - 30 mins</div>
                 </li>
                 <li className="filter-item">

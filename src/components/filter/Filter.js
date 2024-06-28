@@ -1,5 +1,6 @@
 import CookTime from "./CookTime.js"
 import Price from "./Price.js"
+import Protein from "./Protein.js"
 
 /*
 Working on filtering but mainly working with changing the filters
@@ -18,7 +19,8 @@ const Filter = ( {updateParams, params} ) => {
                 Filters
             </h3>
             <CookTime updateParams={updateParams} params={params}/>
-            <Price updateParams params/>
+            <Protein updateParams={updateParams} params={params}/>
+            <Price updateParams={updateParams} params={params}/>
         </>
 
     )
