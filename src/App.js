@@ -3,13 +3,13 @@ import {Route, Routes} from 'react-router-dom'
 import Layout from './Layout'
 import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
-import Home from './components/Home'
-import Header from './components/Header';
-import Register from './components/Register';
-import Login from './components/Login';
-import Admin from './components/Admin';
-import Settings from './components/Settings';
-import Recipes from './components/Recipes';
+import Home from './components/home/Home'
+import Header from './components/header/Header';
+import Register from './components/register/Register';
+import Login from './components/login/Login';
+import Admin from './components/admin/Admin';
+import Settings from './components/settings/Settings';
+import Recipes from './components/recipes/Recipes';
 
 
 function App() {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import useAxiosPrivate from '../hooks/useAxiosPrivate';
-import Filter from './filter/Filter';
-import '../index.css';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import Filter from '../filter/Filter';
+import '../../index.css';
 
 const Recipes = () => {
 

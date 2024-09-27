@@ -1,11 +1,11 @@
-import '../index.css';
+import './Account.css';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { Offcanvas, OffcanvasBody, OffcanvasHeader, OffcanvasTitle } from 'react-bootstrap';
 import { useState } from 'react';
-import useLogout from '../hooks/useLogout';
+import useLogout from '../../hooks/useLogout';
 
 //To persist logged in through page renders for now you can just use local storage
 //link: https://blog.bitsrc.io/5-methods-to-persisting-state-between-page-reloads-in-react-8fc9abd3fa2f 

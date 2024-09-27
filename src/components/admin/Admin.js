@@ -1,5 +1,5 @@
-import Users from "./Users"
-import '../index.css';
+import Users from "../users/Users"
+import '../../index.css';
 
 const Admin = () => {
   return (
