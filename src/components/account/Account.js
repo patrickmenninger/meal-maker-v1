@@ -62,9 +62,9 @@ if (username) {
   )
 } else {
     return (
-        <div className="ml-6 pl-4 border-l border-black">
-            <FontAwesomeIcon icon={faCircleUser} className="text-brown" size='2xl'/>
-            <a href='/login' className="text-xl ml-4 text-grey no-underline hover:text-tan">Sign in</a>
+        <div className="auth-container">
+            <Link to='/login' className="auth-link">Log in</Link>
+            <Link to='/register' className="auth-link">Sign Up</Link>
         </div>
       )
 }

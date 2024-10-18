@@ -8,18 +8,15 @@ const Header = () => {
 
   return (
     <header>
+      <div className="logo-container">
+        <a href='/'>
+          <FontAwesomeIcon icon={faPlateWheat} id="logo" size='2xl'/>
+        </a>
+        <h5 id="company">M E A L M A K E R</h5>
+      </div>
       <nav>
-          {/* Contains logo, the name, and the account username */}
-          <div className="nav-container">
-            <a href='/'>
-              <FontAwesomeIcon icon={faPlateWheat} id="logo" size='2xl'/>
-            </a>
-            <h5>M E A L M A K E R</h5>
-          </div>
-          <div className="nav-container">
-            <Navigation />
-            <Account/>
-          </div>
+        <Account />
+        <Navigation />
       </nav>
     </header>
   )
