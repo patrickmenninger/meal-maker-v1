@@ -8,9 +8,9 @@ export default {
     extend: {
         colors: {
             sage_green: '#A8D5BA',
-            olive_green: '#7A9A92',
+            olive_green: '#859f53',
             mint_green: '#D9F1E0',
-            warm_beige: '#F5F5F1',
+            warm_beige: '#f4f4db',
             charcoal_gray: '#4C4C4C',
             soft_white: '#FFFFFF',
         },
