@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Error from '../../components/Error'
 import Card from '../../components/Card'
 import Input from '../../components/Input'
@@ -8,6 +9,10 @@ import { useState, useEffect } from 'react'
 import "./LoginPage.css"
 
 const LoginPage = () => {
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -23,7 +28,8 @@ const LoginPage = () => {
 
         try {
 
-            const response = await axios.post("/auth/authenticate", {email, password}, {
+            const response = await axios.post("/auth/authenticate", {email, password}, 
+                {
                     headers: {'Content-Type': "application/json"},
                     withCredentials: true
                 }
@@ -34,9 +40,13 @@ const LoginPage = () => {
             setEmail('');
             setPassword('');
 
-        } catch (err) {
-            if (err.status === 401) {
+            navigate(from, {replace: true})
+
+        } catch (error) {
+            if (error.status === 401) {
                 setErrMsg("Invalid email or password");
+            } else {
+                setErrMsg(error);
             }
         }
 
@@ -49,7 +59,7 @@ const LoginPage = () => {
             <form className="flex flex-col gap-8 p-6" onSubmit={handleSubmit} noValidate>
                 <div className="flex justify-between items-center">
                     <h2 className="text-2xl font-bold text-charcoal_gray">Sign In</h2>
-                    <img src="/logo.png" className="h-16 w-16"/>
+                    <Link to="/"><img src="/logo.png" className="h-16 w-16"/></Link>
                 </div>
                 <Input 
                     label='Email'
@@ -72,7 +82,7 @@ const LoginPage = () => {
                 <Button type='submit'>Log In</Button>
                 <div className="space-x-4">
                     <span>Don't have an account?</span>
-                    <a href="/register" className="text-blue-700 hover:text-purple-950 underline">Sign up here</a>
+                    <Link to="/register" className="text-blue-700 hover:text-purple-950 underline">Sign up here</Link>
                 </div>
             </form>
         </Card>

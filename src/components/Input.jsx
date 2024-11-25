@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = ({label, type, placeholder, name, className, value, onChange, required}) => {
+const Input = ({label, type, placeholder, name, className, value, onChange, onFocus, onBlur, required}) => {
   return (
     <div>
         {label && <label htmlFor={name} className="text-charcoal_gray">{label}</label>}
@@ -12,6 +12,8 @@ const Input = ({label, type, placeholder, name, className, value, onChange, requ
             id={name}
             value={value}
             onChange={onChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
             required={required}
         />
     </div>
