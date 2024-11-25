@@ -97,7 +97,7 @@ const RegisterPage = () => {
             <form className="flex flex-col gap-4 p-6" onSubmit={handleSubmit} noValidate>
                 <div className="flex justify-between items-center">
                     <h2 className="text-2xl font-bold text-charcoal_gray">Register</h2>
-                    <Link to="/"><img src="/logo.png" className="h-16 w-16"/></Link>
+                    <Link to="/"><img src="/logo.png" className="h-16 w-16" alt="MealMaker"/></Link>
                 </div>
                 <Input 
                     label='First Name'

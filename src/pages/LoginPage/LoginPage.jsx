@@ -59,7 +59,7 @@ const LoginPage = () => {
             <form className="flex flex-col gap-8 p-6" onSubmit={handleSubmit} noValidate>
                 <div className="flex justify-between items-center">
                     <h2 className="text-2xl font-bold text-charcoal_gray">Sign In</h2>
-                    <Link to="/"><img src="/logo.png" className="h-16 w-16"/></Link>
+                    <Link to="/"><img src="/logo.png" className="h-16 w-16" alt="MealMaker"/></Link>
                 </div>
                 <Input 
                     label='Email'
