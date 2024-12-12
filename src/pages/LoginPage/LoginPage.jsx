@@ -7,8 +7,11 @@ import Button from '../../components/Button'
 import axios from '../../api/axios'
 import { useState, useEffect } from 'react'
 import "./LoginPage.css"
+import { useAuth } from '../../context/AuthProvider'
 
 const LoginPage = () => {
+
+    const {auth, setAuth} = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -35,17 +38,19 @@ const LoginPage = () => {
                 }
             );
             
-            axios.defaults.headers.common = {'Authorization': `Bearer ${response.data.accessToken}`};
+            setAuth({ accessToken: response.data.accessToken });
+            localStorage.setItem("temp", response.data.accessToken);
 
             setEmail('');
             setPassword('');
 
-            navigate(from, {replace: true})
+            navigate(from, {replace: true});
 
         } catch (error) {
             if (error.status === 401) {
                 setErrMsg("Invalid email or password");
             } else {
+                console.log(error);
                 setErrMsg(error);
             }
         }
