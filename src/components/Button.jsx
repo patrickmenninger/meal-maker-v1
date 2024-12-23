@@ -9,7 +9,7 @@ const Button = ({children, type = "submit", variant = "primary", disabled = fals
   return (
     <button 
       type={type}
-      className={`py-2 rounded-md ${variantStyle} text-white`}
+      className={`p-2 rounded-md ${variantStyle} text-white`}
       disabled={disabled}
       >
         {children}
