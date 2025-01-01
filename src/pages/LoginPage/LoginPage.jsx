@@ -11,7 +11,7 @@ import { useAuth } from '../../context/AuthProvider'
 
 const LoginPage = () => {
 
-    const {auth, setAuth} = useAuth();
+    const {setAuth} = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -39,12 +39,11 @@ const LoginPage = () => {
             );
             
             setAuth({ accessToken: response.data.accessToken });
-            localStorage.setItem("temp", response.data.accessToken);
 
             setEmail('');
             setPassword('');
 
-            navigate(from, {replace: true});
+            navigate("/recipes", {replace: true});
 
         } catch (error) {
             if (error.status === 401) {
