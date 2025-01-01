@@ -1,0 +1,19 @@
+#email {
+    background-image: url("/email.svg");
+    background-color: white;
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    padding-left: 40px;
+    color: #4C4C4C;
+}
+
+#password {
+    background-image: url("/lock.svg");
+    background-color: white;
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    padding-left: 40px;
+    color: #4C4C4C;
+}
