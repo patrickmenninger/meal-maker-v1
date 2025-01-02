@@ -1,19 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { axiosPrivate } from '../api/axios';
+import Button from '../components/Button';
 
 const RecipePage = () => {
 
     const { id } = useParams();
 
-    const { data, isError, isLoading } = useQuery({
+    const { data, isError, error, isLoading } = useQuery({
         queryKey: ['recipes', id],
         queryFn: async () => {
             const response = await axiosPrivate.get(`/recipes/${id}`);
             return response.data;
         },
-        staleTime: 0,
     });
 
     if (isLoading) {
@@ -25,7 +25,10 @@ const RecipePage = () => {
     }
 
   return (
-    <div>{data.title}</div>
+    <div>
+        <div>{data.title}</div>
+        <Button type="button"><Link to={`/users/${data.user.id}`}>User</Link></Button>
+    </div>
   )
 }
 
