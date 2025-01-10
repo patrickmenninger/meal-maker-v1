@@ -6,6 +6,7 @@ import RecipesPage from "./pages/RecipesPage";
 import RecipePage from "./pages/RecipePage";
 import { AuthProvider } from "./context/AuthProvider";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import PersonalRecipesPage from "./pages/PersonalRecipesPage";
 
 const queryClient = new QueryClient()
 
@@ -18,6 +19,7 @@ const App = () => {
                     <Route path="/" element={<MainLayout />}>
                         <Route path="/recipes" element={<RecipesPage />}/>
                         <Route path="/recipes/:id" element={<RecipePage />}/>
+                        <Route path="/users/:id" element={<PersonalRecipesPage />}/>
                     </Route>
                     <Route path="/login" element={<LoginPage />}/>
                     <Route path="/register" element={<RegisterPage />}/>
